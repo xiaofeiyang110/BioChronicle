@@ -1,0 +1,10 @@
+langchain
+langchain-openai
+newspaper3k
+duckduckgo-search
+python-dotenv
+pyyaml
+requests
+tiktoken
+lxml_html_clean
+langchain_community

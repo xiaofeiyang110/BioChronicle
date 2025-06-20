@@ -1,0 +1,42 @@
+
+  
+style:
+  article:
+    tone: "生动有趣"
+    length: 1000
+    
+verification:
+  enabled: true
+  min_confidence: 0.6
+
+
+model_provider: "tongyi"  # 可选: "tongyi" 或 "volc"
+tongyi_model: "qwen-max"
+volc_model: "doubao-1.6"
+
+
+
+
+
+
+# 模型配置
+model:
+  provider: "tongyi"  # openai/tongyi/doubao
+  openai_model: "gpt-4-turbo"
+  tongyi_model: "qwen-max"
+  doubao_model: "doubao-1.6"
+  
+# 图片生成配置
+image:
+  engine: "tongyi"    # dalle/tongyi/volcengine
+  style: "历史插画风格"
+  
+# API密钥配置
+api_keys:
+  openai: "sk-..."  # OpenAI API密钥
+  dashscope: "sk-..."  # 阿里云通义千问API密钥
+  volc_access_key: "..."  # 火山引擎Access Key
+  volc_secret_key: "..."  # 火山引擎Secret Key
+  volc_region: "cn-beijing"  # 火山引擎区域
+
+# 其他配置保持不变...
