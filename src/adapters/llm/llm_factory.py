@@ -1,6 +1,7 @@
 from .openai_adapter import OpenAIModelAdapter
 from .tongyi_adapter import TongyiModelAdapter
 from .doubao_adapter import DoubaoModelAdapter
+from .base_adapter import BaseLLMAdapter
 
 class LLMFactory:
     """大模型工厂类"""

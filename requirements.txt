@@ -8,3 +8,4 @@ requests
 tiktoken
 lxml_html_clean
 langchain_community
+dashscope>=1.16.0

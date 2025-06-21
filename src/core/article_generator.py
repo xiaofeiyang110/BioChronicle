@@ -1,7 +1,7 @@
 from langchain.prompts import ChatPromptTemplate
-from adapters.llm_adapter import get_llm
+from adapters.llm.llm_factory import LLMFactory
 from utils.config_loader import get_config
-from utils.style_transfer import apply_style
+from utils.style_transfer import apply_style  # 修复导入
 
 def generate_article(info):
     """生成传记文章"""
@@ -33,10 +33,16 @@ def generate_article(info):
         "anecdotes": "\n- ".join(info.get("anecdotes", []))
     }
     
+    # 获取模型适配器
+    config = get_config()
+    model_config = config.get('model', {})
+    llm_adapter = LLMFactory.get_adapter(model_config)
+    
     # 生成文章
-    llm = get_llm()
+    llm = llm_adapter.get_llm()
     prompt_template = ChatPromptTemplate.from_template(full_prompt)
     chain = prompt_template | llm
     result = chain.invoke(data)
     
+    print(f"使用模型: {llm_adapter.get_model_name()}")
     return result.content

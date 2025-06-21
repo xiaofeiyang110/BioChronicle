@@ -1,6 +1,7 @@
 from .dalle_adapter import DalleAdapter
 from .tongyi_adapter import TongyiImageAdapter
 from .volcengine_adapter import VolcEngineImageAdapter
+from .base_adapter import BaseImageAdapter
 
 class ImageFactory:
     """图片生成工厂类"""
