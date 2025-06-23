@@ -46,3 +46,27 @@ def generate_article(info):
     
     print(f"使用模型: {llm_adapter.get_model_name()}")
     return result.content
+
+def generate_article_from_name(name: str):
+    """直接根据人名生成自媒体文章（无需结构化信息）"""
+    base_prompt = f"""
+    你是一位资深传记作家。请围绕“{name}”创作一篇引人入胜的自媒体人物传记文章。
+    要求：
+    1. 标题吸引人（使用emoji和悬念）
+    2. 按时间线叙述（分3-5个章节）
+    3. 每章结尾设悬念
+    4. 融入至少1个趣闻
+    5. 结尾引发讨论（提问式结尾）
+    6. 语言风格生动有趣，适合自媒体传播
+    """
+    # 应用风格配置
+    full_prompt = apply_style(base_prompt)
+    config = get_config()
+    model_config = config.get('model', {})
+    llm_adapter = LLMFactory.get_adapter(model_config)
+    llm = llm_adapter.get_llm()
+    prompt_template = ChatPromptTemplate.from_template(full_prompt)
+    chain = prompt_template | llm
+    result = chain.invoke({})
+    print(f"使用模型: {llm_adapter.get_model_name()}")
+    return result.content
